@@ -108,7 +108,6 @@ const habitSchema = new mongoose.Schema({
 
 
 
-// Virtual for formatted duration display
 habitSchema.virtual('formattedDuration').get(function() {
   const duration = this.currentDuration;
   return formatDuration(duration);
@@ -144,3 +143,7 @@ habitSchema.pre('save', function(next) {
   });
   next();
 });
+
+const Habit = mongoose.model("Habit", habitSchema);
+
+export default Habit;
